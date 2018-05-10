@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Question list
+{% endblock %}
+
+{% block body %}
+<ul>
+{% for question in questions %}
+    <li><a href="{% url 'question' %}?id={{ question.id }}">{{ question.text }}</a></li>
+{% endfor %}
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
+
+</ul>
+{% endblock %}
